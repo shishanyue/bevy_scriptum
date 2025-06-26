@@ -14,9 +14,13 @@ keywords = ["bevy", "lua", "scripting", "game", "script"]
 lua = ["dep:mlua", "mlua/luajit"]
 rhai = ["dep:rhai"]
 ruby = ["dep:magnus", "dep:rb-sys"]
-
+js = ["dep:boa_engine", "dep:boa_gc", "dep:boa_runtime"]
+default = ["lua","js"]
 [dependencies]
-bevy = { default-features = false, version = "0.16", features = ["bevy_asset", "bevy_log"] }
+bevy = { default-features = false, version = "0.16", features = [
+    "bevy_asset",
+    "bevy_log",
+] }
 serde = "1.0.162"
 rhai = { version = "1.14.0", features = [
     "sync",
@@ -32,10 +36,18 @@ mlua = { version = "0.9.8", features = [
     "send",
 ], optional = true }
 magnus = { version = "0.7.1", optional = true }
-rb-sys = { version = "0.9", default-features = false, features = ["link-ruby", "ruby-static"], optional = true }
+rb-sys = { version = "0.9", default-features = false, features = [
+    "link-ruby",
+    "ruby-static",
+], optional = true }
 crossbeam-channel = "0.5.15"
 libc = "0.2.172"
 
+
+boa_gc = { version = "0.20.0", optional = true }
+
+boa_engine = { path = "D:/Users/shishanyue/Documents/GitHub/boa/core/engine", optional = true }
+boa_runtime = { path = "D:/Users/shishanyue/Documents/GitHub/boa/core/runtime", optional = true }
 [[example]]
 name = "call_function_from_rust_rhai"
 path = "examples/rhai/call_function_from_rust.rs"

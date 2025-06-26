@@ -4,3 +4,5 @@ pub mod lua;
 pub mod rhai;
 #[cfg(feature = "ruby")]
 pub mod ruby;
+#[cfg(feature = "js")]
+pub mod js;
